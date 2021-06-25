@@ -9,7 +9,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -17,7 +16,6 @@ import java.net.InetAddress;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 
 public class Main extends Application {
 
@@ -90,17 +88,13 @@ public class Main extends Application {
                 }
             }
         }
-
         //ThreadStarter
         Thread thread = new Thread(new readmessages());
         thread.start();
-
+        
         primaryStage.show();
     }
-
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+    
+    public static void main(String[] args) {launch(args);}
 }
+//ocdHandler
