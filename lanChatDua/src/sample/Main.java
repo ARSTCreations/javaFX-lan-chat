@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -16,6 +17,7 @@ import java.net.InetAddress;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class Main extends Application {
 
@@ -69,7 +71,7 @@ public class Main extends Application {
             {e.printStackTrace();}
         });
 
-        class readmessages implements Runnable {
+        class readmessagesThread implements Runnable {
             @Override
             public void run() {
                 while(true) {
@@ -81,20 +83,25 @@ public class Main extends Application {
                         Date date = new Date();
                         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                         messageTa.appendText(dgpread.getAddress().toString()+": " +format.format(date) + '\n');
-                        messageTa.appendText( readmessage + '\n');
+                        messageTa.appendText( readmessage + +'\n');
+                        //messageTa.appendText( "pesan rahasia" + +'\n');
                     }
                     catch(Exception e)
                     {e.getStackTrace();}
                 }
             }
         }
+
         //ThreadStarter
-        Thread thread = new Thread(new readmessages());
+        Thread thread = new Thread(new readmessagesThread());
         thread.start();
-        
+
         primaryStage.show();
     }
-    
-    public static void main(String[] args) {launch(args);}
+
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
-//ocdHandler
